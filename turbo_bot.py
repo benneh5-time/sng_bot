@@ -1073,7 +1073,7 @@ async def status(ctx, *args):
     host_list = [f"{host}\n" for host in game_host_name]
     hosts = ''.join(host_list)
     embed.add_field(name="**Host**", value=hosts, inline=True)
-    embed.add_field(name="**Phases**", value=str(day_length) + "m Days, " + str(night_length) + "m Nights", inline=True)
+    embed.add_field(name="**Phases**", value=str(day_length) + "h Days, " + str(night_length) + "h Nights", inline=True)
     embed.add_field(name="", value="", inline=True)
     embed.add_field(name="", value="", inline=True)
     embed.add_field(name="", value="", inline=True)
@@ -1104,7 +1104,7 @@ async def status(ctx, *args):
             player_message += "Game is full. Switch to a larger setup using `!game [setup]` or rand the game using `!rand -title \"Title of game thread\"`\n"        
         time_message +=  "!in or react ✅ to join!\n"  
         embed.set_field_at(3, name="**Players:**", value=player_message, inline=True)
-        embed.set_field_at(5, name="**Time Remaining:**", value=time_message, inline=True)
+        #embed.set_field_at(5, name="**Time Remaining:**", value=time_message, inline=True)
         embed.set_field_at(4, name="", value="", inline=True)
     if waiting_list:
         waiting_list_message = ""
@@ -1114,7 +1114,7 @@ async def status(ctx, *args):
             time_message += f"{remaining_time} minutes\n"
             
         embed.set_field_at(6, name="**Waiting List:**", value=waiting_list_message, inline=True)
-        embed.set_field_at(7, name="**Time Remaining:**", value=time_message, inline=True)
+        #embed.set_field_at(7, name="**Time Remaining:**", value=time_message, inline=True)
 
     if not players and not waiting_list:
         embed.add_field(name="No players are currently signed up.", value="", inline=False)
@@ -1152,7 +1152,7 @@ async def update_status():
     host_list = [f"{host}\n" for host in game_host_name]
     hosts = ''.join(host_list)
     embed.set_field_at(1, name="**Host**", value=hosts, inline=True)
-    embed.set_field_at(2, name="**Phases**", value=str(day_length) + "m Days, " + str(night_length) + "m Nights", inline=True)
+    embed.set_field_at(2, name="**Phases**", value=str(day_length) + "h Days, " + str(night_length) + "h Nights", inline=True)
 
     
 
@@ -1160,16 +1160,16 @@ async def update_status():
 
     if players:
         player_message = ""
-        time_message = ""
+        #time_message = ""
         for i, (alias, remaining_time) in enumerate(players.items(), 1):
             player_msg = alias
             for item in status_flavor:
                 if alias == item['alias']:
                     player_msg = f"{alias} {item['icon']}"
             player_message += f"{player_msg}\n"
-            time_message += f"{remaining_time} minutes\n"
-        if baitping:
-            time_message += "10 minutes\n"
+            #time_message += f"{remaining_time} minutes\n"
+        #if baitping:
+            #time_message += "10 minutes\n"
             
         spots_left = player_limit - len(players)
         if spots_left > 1:
@@ -1190,10 +1190,10 @@ async def update_status():
                 player_message += f"+{spots_left - 1} !!\n"
             else:
                 player_message += "Game is full. Switch to a larger setup using `!game [setup]` or rand the game using `!rand -title \"Title of game thread\"`\n"        
-        time_message +=  "!in or react ✅ to join!\n"
+        #time_message +=  "!in or react ✅ to join!\n"
         
         embed.set_field_at(3, name="**Players:**", value=player_message, inline=True)
-        embed.set_field_at(5, name="**Time Remaining:**", value=time_message, inline=True)
+        #embed.set_field_at(5, name="**Time Remaining:**", value=time_message, inline=True)
     
     if waiting_list:
         waiting_list_message = ""
@@ -1203,7 +1203,7 @@ async def update_status():
             time_message += f"{remaining_time} minutes\n"            
 
         embed.set_field_at(6, name="**Waiting List:**", value=waiting_list_message, inline=True)
-        embed.set_field_at(7, name="**Time Remaining:**", value=time_message, inline=True)
+        #embed.set_field_at(7, name="**Time Remaining:**", value=time_message, inline=True)
         
     if not players and not waiting_list:
         embed.set_field_at(3, name="No players are currently signed up.", value="", inline=False)
