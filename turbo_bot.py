@@ -41,9 +41,9 @@ valid_setups = ["joat10", "vig10", "bomb10", "bml10", "ita10", "ita13", "cop9", 
 valid_timers = ["12-12", "36-12", "48-24"] # 12/12, 36/12, 48/24
 day_length = 14
 night_length = 3
-allowed_channels = [1287596528780840970]  # 1287596528780840970 signups, 
-all_channels = [1287596528780840970] #signups
-react_channels = [1287596528780840970, 1287597070865141830] #signups and spec chat links
+allowed_channels = [1287607575377875098]  # 1287607575377875098 signups, 
+all_channels = [1287607575377875098] #signups
+react_channels = [1287607575377875098, 1287597070865141830] #signups and spec chat links
 banned_users = [1173036536166621286]
 future_banned = [190312702692818946]
 dvc_channel = 1287597070865141830  # ongoing game links
@@ -1692,7 +1692,7 @@ async def on_message(message):
 
     if isinstance(message.channel, discord.DMChannel):
         if message.author.id in mods:
-            target_channel = bot.get_channel(1287596528780840970)
+            target_channel = bot.get_channel(1287607575377875098)
             await target_channel.send(f"{message.content}")   
 
     if message.author == bot.user or message.channel.id not in allowed_channels:
