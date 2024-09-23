@@ -100,16 +100,16 @@ def load_player_list():
     try:
         with open('player_list_data.json', 'r') as f:
             data = json.load(f)
-        player_list = data.get('player_list', [])
-        waiting_list = data.get('waiting_list', [])
-        current_setup = data.get('current_setup', "joat10")
-        game_host_name = data.get('game_host_name', "Turby")
-        player_limit = data.get('player_limit', 10)
+        player_list = data.get('player_list')
+        waiting_list = data.get('waiting_list')
+        current_setup = data.get('current_setup')
+        game_host_name = data.get('game_host_name')
+        player_limit = data.get('player_limit')
         return player_list, waiting_list, current_setup, game_host_name, player_limit
     except FileNotFoundError:
-        return {}, {}
+        return {}, {}, {}, {}, {}
     except json.JSONDecodeError:
-        return {}, {}
+        return {}, {}, {}, {}, 
         
 def find_key_by_value(dictionary, value):
     for key, val in dictionary.items():
