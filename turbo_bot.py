@@ -107,9 +107,9 @@ def load_player_list():
         player_limit = data.get('player_limit')
         return player_list, waiting_list, current_setup, game_host_name, player_limit
     except FileNotFoundError:
-        return {}, {}, "joat 10", ["Turby"], 10
+        return [], [], "joat 10", ["Turby"], 10
     except json.JSONDecodeError:
-        return {}, {}, "joat 10", ["Turby"], 10
+        return [], [], "joat 10", ["Turby"], 10
         
 def find_key_by_value(dictionary, value):
     for key, val in dictionary.items():
