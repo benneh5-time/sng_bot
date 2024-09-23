@@ -27,7 +27,7 @@ data = None
 
 def generate_game_thread_uuid():
     random_uuid = str(uuid.uuid4())[:16]
-    return f"Automated turbo game thread: {random_uuid}"
+    return f"Automated SNG game thread: {random_uuid}"
     
 def login(username, password):
     session = requests.Session()
@@ -115,7 +115,7 @@ def new_thread_token(session):
     #
     payload = {
         "do": "newthread",
-        "f": "6"
+        "f": "48"
         }
         
     response = session.get(protected_url, data=payload)
@@ -230,7 +230,7 @@ def post_thread(session, game_title, security_token, setup, test):
         game_flavor = random.choice(flavors)
 
     if test == False:
-        forum = "6"
+        forum = "48"
     else:
         forum = "48"
         

@@ -54,7 +54,7 @@ baitping = False
 status_id = None
 status_channel = None
 is_rand_running = False
-turbo_ping_message = None
+SNG_ping_message = None
     
 def load_flavor_json(file):
     try:
@@ -391,7 +391,7 @@ async def sub(ctx, player=None):
     if ctx.channel.id not in allowed_channels:
         return
     if ctx.author.id in banned_users:
-        await ctx.send("You have been banned for misusing bigping and are not allowed to adjust turbos.")
+        await ctx.send("You have been banned for misusing bigping and are not allowed to adjust SNGs.")
         return 
     if player == None:
         await ctx.send("Use !sub [Player_to_replace] to sub into the game. You will need an alias set in order to sub.")
@@ -426,7 +426,7 @@ async def stats(ctx, game_setup=None):
         return
     
     if ctx.author.id in banned_users:
-        await ctx.send("You have been banned for misusing bigping and are not allowed to adjust turbos.")
+        await ctx.send("You have been banned for misusing bigping and are not allowed to adjust SNGs.")
         return   
 
     df = pd.read_csv('game_database.csv')
@@ -525,7 +525,7 @@ async def anongame(ctx, anon=None):
         return
     
     if ctx.author.id in banned_users:
-        await ctx.send("You have been banned for misusing bigping and are not allowed to adjust turbos.")
+        await ctx.send("You have been banned for misusing bigping and are not allowed to adjust SNGs.")
         return
     
     global anon_enabled
@@ -550,7 +550,7 @@ async def game(ctx, setup_name=None, Xer_Players: int = None):
     if ctx.author.id in future_banned:
         await ctx.send("Your future ban of August 1st, 2027 is not yet in effect, so you may use Turby until then.")
     if ctx.author.id in banned_users:
-        await ctx.send("You have been banned for misusing bigping and are not allowed to adjust turbos.")
+        await ctx.send("You have been banned for misusing bigping and are not allowed to adjust SNGs.")
         return
 
     global current_setup, player_limit, players, waiting_list
@@ -626,7 +626,7 @@ async def phases(ctx, timer_name=None):
         return
     
     if ctx.author.id in banned_users:
-        await ctx.send("You have been banned for misusing bigping and are not allowed to adjust turbos.")
+        await ctx.send("You have been banned for misusing bigping and are not allowed to adjust SNGs.")
         return
 
     global current_timer, day_length, night_length
@@ -694,7 +694,7 @@ async def flavor(ctx, charname=None, charimage=None):
         return
     
     if ctx.author.id in banned_users:
-        await ctx.send("You have been banned for misusing bigping and are not allowed to in turbos.")
+        await ctx.send("You have been banned for misusing bigping and are not allowed to in SNGs.")
         return    
     existing_flavor = load_flavor_json('turboers.json')
     added_flavor = {'character_name': charname, 'character_image': charimage}
@@ -739,7 +739,7 @@ async def wolf_flavor(ctx, charname=None, charimage=None):
         return
     
     if ctx.author.id in banned_users:
-        await ctx.send("You have been banned for misusing bigping and are not allowed to in turbos.")
+        await ctx.send("You have been banned for misusing bigping and are not allowed to in SNGs.")
         return    
 
     existing_flavor = load_flavor_json('wolves.json')
@@ -786,7 +786,7 @@ async def pr_flavor(ctx, charname=None, charimage=None):
         return
     
     if ctx.author.id in banned_users:
-        await ctx.send("You have been banned for misusing bigping and are not allowed to in turbos.")
+        await ctx.send("You have been banned for misusing bigping and are not allowed to in SNGs.")
         return    
     existing_flavor = load_flavor_json('powerroles.json')
     added_flavor = {'character_name': charname, 'character_image': charimage}
@@ -831,7 +831,7 @@ async def in_(ctx, time: int = 10080):
         return
     
     if ctx.author.id in banned_users:
-        await ctx.send("You have been banned for misusing bigping and are not allowed to in turbos.")
+        await ctx.send("You have been banned for misusing bigping and are not allowed to in SNGs.")
         return
     if ctx.author.id in future_banned:
         await ctx.send("Your future ban of August 1st, 2027 is not yet in effect, so you may use Turby until then.")
@@ -890,7 +890,7 @@ async def out(ctx):
     if ctx.channel.id not in allowed_channels:  # Restrict to certain channels
         return
     if ctx.author.id in banned_users:
-        await ctx.send("You have been banned for misusing bigping and are not allowed to adjust turbos.")
+        await ctx.send("You have been banned for misusing bigping and are not allowed to adjust SNGs.")
         return
     if ctx.author.id in future_banned:
         await ctx.send("Your future ban of August 1st, 2027 is not yet in effect, so you may use Turby until then.")
@@ -966,7 +966,7 @@ async def add(ctx, *, alias):
         return
     
     if ctx.author.id in banned_users:
-        await ctx.send("You have been banned for misusing bigping and are not allowed to in turbos.")
+        await ctx.send("You have been banned for misusing bigping and are not allowed to in SNGs.")
         return
     alias = alias.lower()
     global game_host_name, player_limit, players, waiting_list
@@ -1020,7 +1020,7 @@ async def remove(ctx, *, alias):
         return
     
     if ctx.author.id in banned_users:
-        await ctx.send("You have been banned for misusing bigping and are not allowed to in turbos.")
+        await ctx.send("You have been banned for misusing bigping and are not allowed to in SNGs.")
         return
     alias = alias.lower()
     global game_host_name, player_limit, players, waiting_list
@@ -1068,7 +1068,7 @@ async def status(ctx, *args):
 
     baitping = False
 
-    embed = discord.Embed(title="**2023 Award Winner for Best Mechanic!\nTurbo Bot v2.1 (with subs!) by benneh\nHelp keep Turby running by supporting its GoFundMe: https://gofund.me/64aaddfd", color=0x3381ff)
+    embed = discord.Embed(title="**2023 Award Winner for Best Mechanic!\nSNG Bot v2.1 (with subs!) by benneh\nHelp keep Turby running by supporting its GoFundMe: https://gofund.me/64aaddfd", color=0x3381ff)
     embed.add_field(name="**Game Setup**", value=current_setup, inline=True)    
     host_list = [f"{host}\n" for host in game_host_name]
     hosts = ''.join(host_list)
@@ -1233,7 +1233,7 @@ async def delete_archive(ctx, category_name):
                 await channel.delete()
             await ctx.send(f"DVC Archive cleanup complete for {category_name}")
         else:
-            await ctx.send(f"Category {category_name} not found on Turbo DVC server. Try again.")
+            await ctx.send(f"Category {category_name} not found on SNG DVC server. Try again.")
     except:
         await ctx.send("Somethin' fucked up, check logs")
 
@@ -1259,7 +1259,7 @@ async def process_archive(ctx, category_name):
                 thread_id_only = str(match.group(1))
 
         else:
-            await ctx.send(f"Category {category_name} not found on Turbo DVC server. Try again.")
+            await ctx.send(f"Category {category_name} not found on SNG DVC server. Try again.")
     except Exception as error:
         print(f"Error: {error}", flush=True)
         await ctx.send("Somethin' fucked up, check logs")
@@ -1271,10 +1271,10 @@ async def host(ctx, *, host_name=None):
     if ctx.channel.id not in allowed_channels:  # Restrict to certain channels
         return
     if ctx.author.id in banned_users:
-        await ctx.send("You have been banned and are not allowed to host turbos.")
+        await ctx.send("You have been banned and are not allowed to host SNGs.")
         return
     if ctx.author.id not in mods:
-        await ctx.send("Hosting is limited to a select set of users who will not ruin the DVC experience for others and also for those who have subscribed to the Turbot Advanced package, $5.99 a month. DM Benneh for billing options.")
+        await ctx.send("Hosting is limited to a select set of users who will not ruin the DVC experience for others and also for those who have subscribed to the Sit N Go-y Advanced package, $5.99 a month. DM Benneh for billing options.")
         return
     global game_host_name
     
@@ -1292,7 +1292,7 @@ async def host(ctx, *, host_name=None):
         if ctx.author.id in aliases:
             host_name = aliases[ctx.author.id]
             if host_name in players or host_name in waiting_list:
-                await ctx.send(f"{host_name} is already on the turbo list or waiting list.\n Please choose a different name for the host.")
+                await ctx.send(f"{host_name} is already on the SNG list or waiting list.\n Please choose a different name for the host.")
                 return
             if host_name in game_host_name:
                 await ctx.send(f"That account is already a host. Stop trying to break me. nya~")
@@ -1301,7 +1301,7 @@ async def host(ctx, *, host_name=None):
                 game_host_name.append(host_name)
                 host_list = [f"{host}" for host in game_host_name]
                 hosts = ', '.join(host_list)
-                await ctx.send(f"Hosts for the next turbo are set as {hosts}")
+                await ctx.send(f"Hosts for the next SNG are set as {hosts}")
                 await update_status()
                 return
         else:
@@ -1309,14 +1309,14 @@ async def host(ctx, *, host_name=None):
             return
     host_name = host_name.lower()            
     if host_name in players or host_name in waiting_list:
-        await ctx.send(f"{host_name} is already on the turbo list or waiting list.\n Please choose a different name for the host.")
+        await ctx.send(f"{host_name} is already on the SNG list or waiting list.\n Please choose a different name for the host.")
         return
     
 
     game_host_name.append(host_name)
     host_list = [f"{host}" for host in game_host_name]
     hosts = ', '.join(host_list)
-    await ctx.send(f"Hosts for the next turbo are set as {hosts}")
+    await ctx.send(f"Hosts for the next SNG are set as {hosts}")
     await update_status() 
     return
     
@@ -1386,7 +1386,7 @@ async def rand(ctx, *args):
                 allowed_randers.append(int(key))    
 
     if ctx.author.id in banned_users:
-        await ctx.send("You have been banned for misusing bigping and are not allowed to rand turbos.")
+        await ctx.send("You have been banned for misusing bigping and are not allowed to rand SNGs.")
         return   
     
     if ctx.author.id not in allowed_randers:
@@ -1491,7 +1491,7 @@ async def rand(ctx, *args):
                             
                 player_mentions = " ".join([f"<@{id}>" for id in mention_list])
                 game_url = f"https://www.mafiauniverse.com/forums/threads/{thread_id}"  # Replace BASE_URL with the actual base URL
-                await ctx.send(f"{player_mentions}\nranded STFU\n{game_url}\nType !dvc to join the turbo DVC/Graveyard. You will be auto-in'd to the graveyard channel upon your death if you are in that server!")
+                await ctx.send(f"{player_mentions}\nranded STFU\n{game_url}\nType !dvc to join the SNG DVC/Graveyard. You will be auto-in'd to the graveyard channel upon your death if you are in that server!")
                 
                 ###################################################
                 ####################### new code for wolf chat adds
@@ -1575,7 +1575,7 @@ async def rand(ctx, *args):
                 summary_json = summary_response.json()
 
                 summary_csv = 'game_database.csv'
-                summary_headers = ['Turbo Title', 'Setup', 'Thread ID', 'Game ID', 'Winning Alignment', 'Villagers', 'Wolves']
+                summary_headers = ['SNG Title', 'Setup', 'Thread ID', 'Game ID', 'Winning Alignment', 'Villagers', 'Wolves']
                 town = summary_json['players']['town']
                 mafia = summary_json['players']['mafia']
 
@@ -1608,7 +1608,7 @@ async def rand(ctx, *args):
                         csv_writer.writeheader()
                     
                     csv_writer.writerow({
-                        "Turbo Title": summary_json['title'],
+                        "SNG Title": summary_json['title'],
                         "Setup": extracted_setup,
                         "Thread ID": summary_json['threadid'],
                         "Game ID": summary_json['id'],
@@ -1630,7 +1630,7 @@ async def clear(ctx, *args):
     if ctx.channel.id not in allowed_channels:  # Restrict to certain channels
         return
     if ctx.author.id in banned_users:
-        await ctx.send("You have been banned for misusing bigping and are not allowed to clear turbos.")
+        await ctx.send("You have been banned for misusing bigping and are not allowed to clear SNGs.")
         return        
     global players, waiting_list, game_host_name, current_setup, player_limit    
     
@@ -1685,7 +1685,7 @@ async def new_game_spec_message(bot, thread_id, title):
 
 @bot.event
 async def on_message(message):
-    global turbo_ping_message
+    global SNG_ping_message
     if message.channel.id == dvc_channel:
         await bot.process_commands(message)
         return
@@ -1704,11 +1704,11 @@ async def on_message(message):
 async def on_reaction_add(reaction, user):
     if user == bot.user or reaction.message.channel.id not in react_channels:
         return
-    global game_host_name, player_limit, players, waiting_list, turbo_ping_message   
-    if reaction.message.id == turbo_ping_message:
+    global game_host_name, player_limit, players, waiting_list, SNG_ping_message   
+    if reaction.message.id == SNG_ping_message:
         if reaction.emoji == '✅':
             if user.id in banned_users:
-                await reaction.message.channel.send("You have been banned for misusing bigping and are not allowed to in turbos.")
+                await reaction.message.channel.send("You have been banned for misusing bigping and are not allowed to in SNGs.")
                 return
             if user.id not in aliases:
                 await reaction.message.channel.send("Please set your MU username by using !alias MU_Username before inning!")
@@ -1760,7 +1760,7 @@ async def on_reaction_add(reaction, user):
     if reaction.message.id == status_id:
         if reaction.emoji == '✅':
             if user.id in banned_users:
-                await reaction.message.channel.send("You have been banned for misusing bigping and are not allowed to in turbos.")
+                await reaction.message.channel.send("You have been banned for misusing bigping and are not allowed to in SNGs.")
                 return
             if user.id not in aliases:
                 await reaction.message.channel.send("Please set your MU username by using !alias MU_Username before inning!")
