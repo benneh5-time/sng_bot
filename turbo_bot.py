@@ -1320,7 +1320,7 @@ async def host(ctx, *, host_name=None):
     await update_status() 
     return
     
-@tasks.loop(minutes=30)
+@tasks.loop(minutes=1)
 async def update_players():
     global player_limit, recruit_timer
     
